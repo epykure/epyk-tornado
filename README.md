@@ -1,5 +1,5 @@
 
-![](https://raw.githubusercontent.com/epykure/epyk-django/master/epykDjango/static/images/logo.ico)
+![](https://raw.githubusercontent.com/epykure/epyk-tornado/master/static/images/logo.ico)
 
 ### Epyk Tornado!
 
