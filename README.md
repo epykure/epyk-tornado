@@ -15,6 +15,7 @@ This repository will deal with common and simple example to demonstrate how to i
 
 Epyk can be used in two different ways:
 
+
 - Generating static or semi static (with Jinja) templates which will then be updated by Tornado
 - Producing on the fly template within the views
 
