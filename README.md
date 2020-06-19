@@ -1,13 +1,50 @@
 
 ![](https://raw.githubusercontent.com/epykure/epyk-tornado/master/static/images/logo.ico)
 
-### Epyk Tornado!
+# Epyk Tornado!
 
 
 An easy way to use Epyk within a Tornado Web App
 
-Presentation
-================================
+## Quickstart
+
+Install Tornado
+
+> pip install tornado
+
+Install Epyk
+
+> pip install epyk
+
+Then create your first on demand report leveraging on Tornado
+```py
+import tornado.ioloop
+import tornado.web
+
+# Epyk is needed for the on demand report generation
+from epyk.core.Page import Report
+
+class MainOnTheFlyHandler(tornado.web.RequestHandler):
+  def get(self):
+    page = Report()
+    page.headers.dev()
+    div = page.ui.div("Hellow World!")
+    button = page.ui.button("Click Me")
+    div.style.css.color = 'red'
+    button.click([
+      page.js.alert("Clicked")
+    ])
+
+    self.write(page.outs.html())
+
+
+def make_app():
+    return tornado.web.Application([
+        (r"/dynamic", MainOnTheFlyHandler),
+    ])
+```
+
+## Presentation
 This package will make a simple interface between the back and the front end generation.
 For advanced use of Tornado please refer to the [official website](https://www.tornadoweb.org/en/stable/)
 
@@ -20,9 +57,7 @@ Epyk can be used in two different ways:
 
 This project will provide example on the different ways of using Epyk templates.
 
-Design Principle
-================================
-
+## Design Principle
 The design is similar to any moder web server the different here is that the code is generated from Python.
 Epyk is designed to generate a rich HTML and JavaScript code which can be used by any browser.
 
@@ -56,8 +91,7 @@ On teh server side for complex component, the data module will provide you with 
     <img src="https://github.com/epykure/epyk-tornado/blob/master/static/images/server_archi_3.PNG?raw=true">
 </div>
 
-Benefits
-================================
+## Benefits
 
 - No need anymore to maintain multiple folder with various styles and template. This can be managed by inheritance directly on the Python Layer.
 - No need to install or import the right modules to your app. Components will build the page and add dynamically the necessary external packages.
